@@ -180,42 +180,23 @@ body::before {
   transform: rotate(-2deg);
 }
 
-.baby {
-  display: block;
-  width: clamp(150px, min(44vw, 27vh), 240px);
-  margin: 0.75rem auto 0;
-}
-
+/* Sits outside the card and overlaps its top edge */
 .baby {
   position: relative;
+  z-index: 2;
+  display: block;
+  flex: none;
+  width: 80px;
+  margin: 0 auto -26px;
   transform-origin: 50% 85%;
   animation: nod 5s ease-in-out infinite;
 }
 
 .baby img {
   display: block;
-  width: 100%;
+  width: 80px;
+  max-width: 100%;
   height: auto;
-}
-
-.wink {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.wink-lid {
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: 50% 0;
-  animation: wink 5s ease-in-out infinite;
-}
-
-@keyframes wink {
-  0%, 84%, 92%, 100% { opacity: 0; transform: scaleY(0.2); }
-  86%, 90% { opacity: 1; transform: scaleY(1); }
 }
 
 .name {
