@@ -1,20 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Beren Erdem · Something sweet is on the way</title>
-  <meta name="description" content="Beren Erdem's little corner of the internet. Born 30 March 2026. Something sweet is on the way!">
+  <title>Beren Erdem · Çok tatlı bir şey yolda</title>
+  <meta name="description" content="Beren Erdem'in internetteki minicik köşesi. 30 Mart 2026'da doğdu. Çok tatlı bir şey yolda!">
   <meta name="theme-color" content="#fff6ec">
   <meta property="og:title" content="Beren Erdem">
-  <meta property="og:description" content="Something sweet is on the way. Born 30 March 2026.">
+  <meta property="og:description" content="Çok tatlı bir şey yolda. 30 Mart 2026'da doğdu.">
   <meta property="og:url" content="https://berenerdem.com/">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:image" content="https://berenerdem.com/assets/img/beren.png">
+  <meta property="og:image:alt" content="Kocaman gülümseyen bebek Beren">
+  <link rel="preload" href="/assets/img/beren.webp" as="image" type="image/webp">
   <link rel="canonical" href="https://berenerdem.com/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
@@ -61,6 +65,36 @@
         <path d="M27 43l-1 22M33 43l1 22" stroke="#5b4a6b" stroke-width="3" stroke-linecap="round"/>
         <circle cx="30" cy="70" r="7" fill="#ffc2d1" stroke="#5b4a6b" stroke-width="3"/>
       </symbol>
+      <symbol id="blob" viewBox="0 0 200 210">
+        <path d="M104 9c42-2 80 26 86 72 6 44-12 98-58 116-40 16-90 6-112-34C0 125 4 74 30 42 49 19 74 10 104 9z" fill="currentColor" stroke="#5b4a6b" stroke-width="3.4" stroke-linejoin="round"/>
+        <path d="M98 15c44 0 78 30 83 70 5 42-16 92-60 106-38 12-82 0-101-36-18-34-10-82 18-108 16-16 36-31 60-32z" fill="none" stroke="#5b4a6b" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="9 7 3 7" opacity=".55"/>
+      </symbol>
+      <filter id="sticker" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceAlpha" result="solid">
+          <feFuncA type="linear" slope="5" intercept="-1.5"/>
+        </feComponentTransfer>
+        <feMorphology in="solid" operator="dilate" radius="5" result="fat"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="9" result="noise"/>
+        <feDisplacementMap in="fat" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G" result="border"/>
+        <feMorphology in="border" operator="dilate" radius="2" result="outline"/>
+        <feFlood flood-color="#c9b6f2" flood-opacity=".8"/>
+        <feComposite in2="outline" operator="in"/>
+        <feOffset dx="5" dy="6" result="shadow"/>
+        <feFlood flood-color="#4a3b5c"/>
+        <feComposite in2="outline" operator="in" result="ink"/>
+        <feFlood flood-color="#ffffff"/>
+        <feComposite in2="border" operator="in" result="paper"/>
+        <feMerge>
+          <feMergeNode in="shadow"/>
+          <feMergeNode in="ink"/>
+          <feMergeNode in="paper"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <filter id="grain" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch"/>
+        <feColorMatrix values="0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.4  0 0 0 1.4 -0.45"/>
+      </filter>
     </defs>
   </svg>
 
@@ -94,7 +128,30 @@
   </div>
 
   <main class="card">
-    <p class="hello">hello, world! meet</p>
+    <p class="hello">merhaba dünya! işte karşınızda</p>
+
+    <figure class="portrait">
+      <svg class="portrait-blob" aria-hidden="true" focusable="false"><use href="#blob"/></svg>
+      <div class="portrait-photo">
+        <picture>
+          <source srcset="/assets/img/beren.webp" type="image/webp">
+          <img src="/assets/img/beren.png" width="444" height="600" alt="Kocaman gülümseyen bebek Beren" decoding="async" fetchpriority="high">
+        </picture>
+        <svg class="portrait-grain" aria-hidden="true" focusable="false"><rect width="100%" height="100%" filter="url(#grain)"/></svg>
+      </div>
+      <div class="crown" aria-hidden="true">
+        <svg class="crown-star crown-star--1"><use href="#star"/></svg>
+        <svg class="crown-star crown-star--2"><use href="#star"/></svg>
+        <svg class="crown-star crown-star--3"><use href="#star"/></svg>
+        <svg class="crown-star crown-star--4"><use href="#star"/></svg>
+        <svg class="crown-star crown-star--5"><use href="#star"/></svg>
+      </div>
+      <svg class="portrait-doodle portrait-heart portrait-heart--1" aria-hidden="true" focusable="false"><use href="#heart"/></svg>
+      <svg class="portrait-doodle portrait-heart portrait-heart--2" aria-hidden="true" focusable="false"><use href="#heart"/></svg>
+      <svg class="portrait-doodle portrait-sparkle portrait-sparkle--1" aria-hidden="true" focusable="false"><use href="#sparkle"/></svg>
+      <svg class="portrait-doodle portrait-sparkle portrait-sparkle--2" aria-hidden="true" focusable="false"><use href="#sparkle"/></svg>
+      <svg class="portrait-doodle portrait-swirl" aria-hidden="true" focusable="false"><use href="#swirl"/></svg>
+    </figure>
 
     <h1 class="name">
       <span class="visually-hidden">Beren</span>
@@ -102,18 +159,18 @@
     </h1>
     <svg class="underline" aria-hidden="true" focusable="false"><use href="#squiggle"/></svg>
 
-    <p class="tagline">Something sweet is on the way</p>
+    <p class="tagline">Çok tatlı bir şey yolda</p>
 
     <div class="sign">
       <span class="tape tape--left" aria-hidden="true"></span>
       <span class="tape tape--right" aria-hidden="true"></span>
-      <p>Under construction</p>
-      <p class="sign-sub">little hands are still drawing this page</p>
+      <p>yapım aşamasında</p>
+      <p class="sign-sub">minik eller bu sayfayı hâlâ boyuyor</p>
     </div>
 
     <p class="born">
       <svg class="born-heart" aria-hidden="true" focusable="false"><use href="#heart"/></svg>
-      Born <time datetime="2026-03-30">30 March 2026</time>
+      <span><time datetime="2026-03-30">30 Mart 2026</time>'da doğdu</span>
     </p>
   </main>
 
