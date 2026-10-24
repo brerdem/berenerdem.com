@@ -183,20 +183,24 @@ body::before {
 /* Sits outside the card and overlaps its top edge */
 .baby {
   position: relative;
-  z-index: 2;
+  z-index: 100;
+  isolation: isolate;
   display: block;
   flex: none;
-  width: 80px;
-  margin: 0 auto -26px;
-  transform-origin: 50% 85%;
-  animation: nod 5s ease-in-out infinite;
+  width: 40px;
+  margin: 0 auto -13px;
 }
 
 .baby img {
   display: block;
-  width: 80px;
+  width: 40px;
   max-width: 100%;
   height: auto;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  will-change: transform;
+  -webkit-animation: sway 4s ease-in-out infinite alternate;
+  animation: sway 4s ease-in-out infinite alternate;
 }
 
 .name {
@@ -343,9 +347,14 @@ body::before {
   50% { transform: rotate(calc(var(--r) * -1)) translateY(-4px); }
 }
 
-@keyframes nod {
-  0%, 100% { transform: rotate(-3deg) translateY(0); }
-  50% { transform: rotate(3deg) translateY(-4px); }
+@-webkit-keyframes sway {
+  from { -webkit-transform: rotate(-6deg); transform: rotate(-6deg); }
+  to { -webkit-transform: rotate(6deg); transform: rotate(6deg); }
+}
+
+@keyframes sway {
+  from { -webkit-transform: rotate(-6deg); transform: rotate(-6deg); }
+  to { -webkit-transform: rotate(6deg); transform: rotate(6deg); }
 }
 
 @keyframes beat {
@@ -388,6 +397,7 @@ body::before {
   *,
   *::before,
   *::after {
+    -webkit-animation: none !important;
     animation: none !important;
     transition: none !important;
   }
