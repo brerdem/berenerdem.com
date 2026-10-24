@@ -10,7 +10,7 @@
   --lilac: #c9b6f2;
   --hand: "Gaegu", "Patrick Hand", "Comic Sans MS", cursive;
   --body: "Patrick Hand", "Gaegu", "Comic Sans MS", cursive;
-  --head-w: clamp(96px, 12vw, 130px);
+  --head-w: clamp(118px, 15vw, 160px);
   /* beren-doodle is 509x600 */
   --head-h: calc(var(--head-w) * 600 / 509);
 }
@@ -391,6 +391,15 @@ body::before {
   .star--5 { bottom: 5%; left: 10%; }
   .heart--1 { top: auto; bottom: 12%; left: 4%; }
   .heart--3 { bottom: 3%; left: 40%; }
+}
+
+@media (max-height: 800px) {
+  body { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .card {
+    padding-top: calc(var(--head-h) / 2 + 1rem);
+    padding-bottom: 1.75rem;
+  }
+  .footer { margin-top: 0.75rem; }
 }
 
 @media (max-height: 560px) and (orientation: landscape) {
