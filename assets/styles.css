@@ -180,116 +180,49 @@ body::before {
   transform: rotate(-2deg);
 }
 
-/* ---------- Portrait ---------- */
+.baby {
+  display: block;
+  width: clamp(150px, min(44vw, 27vh), 240px);
+  margin: 0.75rem auto 0;
+}
 
-.portrait {
-  --w: clamp(190px, 46vw, 260px);
+.baby {
   position: relative;
-  width: var(--w);
-  height: calc(var(--w) * 1.08);
-  margin: calc(var(--w) * 0.2) auto 0;
+  transform-origin: 50% 85%;
+  animation: nod 5s ease-in-out infinite;
 }
 
-.portrait-blob {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  color: #ffe3ec;
-  filter: url(#wobble) drop-shadow(6px 7px 0 rgba(169, 216, 242, 0.75));
-  transform: rotate(-4deg);
-}
-
-.portrait-photo {
-  position: absolute;
-  left: 50%;
-  bottom: 9%;
-  width: 64%;
-  aspect-ratio: 444 / 600;
-  transform: translateX(-50%) rotate(3deg);
-  animation: nod 6s ease-in-out infinite;
-}
-
-.portrait-photo img {
+.baby img {
   display: block;
   width: 100%;
-  height: 100%;
-  filter: url(#sticker);
+  height: auto;
 }
 
-/* Crayon/paper grain, masked to the head's silhouette so it never spills outside it */
-.portrait-grain {
+.wink {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  opacity: 0.4;
-  mix-blend-mode: multiply;
-  -webkit-mask: url(/assets/img/beren.webp) center / 100% 100% no-repeat;
-  mask: url(/assets/img/beren.webp) center / 100% 100% no-repeat;
-}
-
-.crown {
-  position: absolute;
-  left: 50%;
-  top: -12%;
-  width: 70%;
-  height: 34%;
-  transform: translateX(-50%);
-}
-
-.crown-star {
-  position: absolute;
-  width: 20%;
-  height: 34%;
   overflow: visible;
-  filter: url(#wobble);
-  animation: twinkle 3s ease-in-out infinite;
-}
-.crown-star--1 { left: 0;   top: 46%; color: var(--pink); }
-.crown-star--2 { left: 19%; top: 14%; color: var(--peach);  animation-delay: -0.6s; }
-.crown-star--3 { left: 40%; top: 0;   width: 24%; height: 40%; color: var(--butter); animation-delay: -1.2s; }
-.crown-star--4 { left: 63%; top: 14%; color: var(--mint);   animation-delay: -1.8s; }
-.crown-star--5 { left: 82%; top: 46%; color: var(--sky);    animation-delay: -2.4s; }
-
-.portrait-doodle {
-  position: absolute;
-  overflow: visible;
-  filter: url(#wobble);
 }
 
-.portrait-heart {
-  width: 15%;
-  height: 14%;
-  animation: bob 4.5s ease-in-out infinite;
+.wink-lid {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: wink 5s ease-in-out infinite;
 }
-.portrait-heart--1 { left: -14%; top: 36%; color: var(--pink); }
-.portrait-heart--2 { right: -12%; bottom: 14%; width: 12%; height: 11%; color: var(--peach); animation-delay: -2s; }
 
-.portrait-sparkle {
-  width: 11%;
-  height: 11%;
-  animation: twinkle 2.4s ease-in-out infinite;
-}
-.portrait-sparkle--1 { right: -10%; top: 28%; color: var(--butter); animation-delay: -0.8s; }
-.portrait-sparkle--2 { left: -6%; bottom: 8%; color: var(--lilac); animation-delay: -1.6s; }
-
-.portrait-swirl {
-  right: -20%;
-  top: 50%;
-  width: 20%;
-  height: 14%;
-  color: var(--lilac);
-  transform: rotate(-20deg);
+@keyframes wink {
+  0%, 84%, 92%, 100% { opacity: 0; transform: scaleY(0.2); }
+  86%, 90% { opacity: 1; transform: scaleY(1); }
 }
 
 .name {
-  margin: 0.05em 0 0;
+  margin: 0.1em 0 0;
   font-family: var(--hand);
   font-weight: 700;
-  font-size: clamp(4.25rem, 2.75rem + 8vw, 8.5rem);
+  font-size: clamp(4.5rem, 3rem + 10vw, 9.5rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
 }
@@ -430,8 +363,8 @@ body::before {
 }
 
 @keyframes nod {
-  0%, 100% { transform: translateX(-50%) rotate(3deg); }
-  50% { transform: translateX(-50%) rotate(-2deg) translateY(-3px); }
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-4px); }
 }
 
 @keyframes beat {
@@ -464,36 +397,6 @@ body::before {
   .star--5 { bottom: 5%; left: 10%; }
   .heart--1 { top: auto; bottom: 12%; left: 4%; }
   .heart--3 { bottom: 3%; left: 40%; }
-}
-
-@media (min-width: 960px) {
-  .card {
-    width: min(100%, 60rem);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "portrait hello"
-      "portrait name"
-      "portrait underline"
-      "portrait tagline"
-      "portrait sign"
-      "portrait born";
-    align-content: center;
-    column-gap: clamp(2rem, 4vw, 3.5rem);
-    border-radius: 225px 22px 255px 22px / 22px 255px 22px 225px;
-  }
-  .portrait {
-    --w: clamp(260px, 26vw, 330px);
-    grid-area: portrait;
-    align-self: center;
-    margin: calc(var(--w) * 0.14) 0 0;
-  }
-  .hello { grid-area: hello; }
-  .name { grid-area: name; }
-  .underline { grid-area: underline; }
-  .tagline { grid-area: tagline; }
-  .sign { grid-area: sign; justify-self: center; }
-  .born { grid-area: born; }
 }
 
 @media (max-height: 560px) and (orientation: landscape) {
