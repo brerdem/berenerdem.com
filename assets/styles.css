@@ -10,7 +10,7 @@
   --lilac: #c9b6f2;
   --hand: "Gaegu", "Patrick Hand", "Comic Sans MS", cursive;
   --body: "Patrick Hand", "Gaegu", "Comic Sans MS", cursive;
-  --head-w: clamp(118px, 15vw, 160px);
+  --head-w: clamp(140px, 18vw, 192px);
   /* beren-doodle is 509x600 */
   --head-h: calc(var(--head-w) * 600 / 509);
 }
@@ -33,7 +33,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* Vertical centring comes from auto margins on .baby and .footer, so tall content scrolls instead of being clipped above the top edge */
+  justify-content: flex-start;
   padding: clamp(1.5rem, 5vw, 3rem) 1.25rem;
   overflow-x: hidden;
   color: var(--ink);
@@ -192,7 +193,7 @@ body::before {
   display: block;
   flex: none;
   width: var(--head-w);
-  margin: 0 auto calc(var(--head-h) / -2);
+  margin: auto auto calc(var(--head-h) / -2);
 }
 
 .baby img {
@@ -318,6 +319,7 @@ body::before {
   position: relative;
   z-index: 1;
   margin-top: 1.5rem;
+  margin-bottom: auto;
   font-family: var(--hand);
   font-size: 1.1rem;
   color: var(--ink-soft);
